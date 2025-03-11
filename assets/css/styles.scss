@@ -1,0 +1,132 @@
+// Variables
+$primary-color: #ff416c;
+$secondary-color: #ff4b2b;
+$gradient-bg: linear-gradient(45deg, $primary-color, $secondary-color, #1e90ff, #4facfe);
+$dark-bg: #121212;
+$light-text: white;
+$dark-text: black;
+$transition: 0.3s ease;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button-style {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: $transition;
+}
+
+// Global Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: $gradient-bg;
+    background-size: 300% 300%;
+    color: $light-text;
+    animation: gradientBG 10s ease infinite;
+}
+
+// Animasi Gradien
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+// Header
+header {
+    padding: 20px;
+
+    h1 {
+        font-size: 3em;
+        font-weight: bold;
+    }
+
+    .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 5px solid $light-text;
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    }
+}
+
+// Social Links
+.social-links {
+    margin-top: 20px;
+
+    a {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 15px;
+        color: $light-text;
+        text-decoration: none;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2);
+        transition: $transition;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+    }
+}
+
+// Projects Section
+.projects {
+    @include flex-center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+
+    .card {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        transition: $transition;
+
+        &:hover {
+            transform: translateY(-10px);
+        }
+    }
+}
+
+// Button
+button {
+    @include button-style;
+    background: $dark-text;
+    color: $light-text;
+    margin-top: 20px;
+
+    &:hover {
+        background: $light-text;
+        color: $dark-text;
+    }
+}
+
+// Dark Mode
+.dark-mode {
+    background: $dark-bg;
+    color: $light-text;
+
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    button {
+        background: $light-text;
+        color: $dark-text;
+    }
+}
